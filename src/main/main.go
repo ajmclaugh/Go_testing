@@ -2,26 +2,20 @@ package main
 
 
 import (
-	"net/http"
-	"log"
-	"io"
+	"catapi"
 	"fmt"
+	"os"
 )
+
+// API to test ->"https://catfact.ninja/fact"
+
 
 func main () {
 
-	endpoint := "https://catfact.ninja/fact"
+	endpoint := os.Args[1] 
 
-	req, err := http.Get(endpoint)
-
-	if err != nil {
-		log.Fatalf("An Error Occurred %v", err)
-	}
-
-	defer req.Body.Close()
-
-	response, err := io.ReadAll(req.Body)
-
+	response := catapi.GetCatAPIRequest(endpoint)
+	
 	fmt.Print(string(response))
 
 }
