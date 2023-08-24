@@ -16,6 +16,6 @@ func main () {
 
 	response := catapi.GetCatAPIRequest(endpoint)
 	
-	fmt.Print(string(response))
+	fmt.Print(response)
 
 }

@@ -8,12 +8,12 @@ import(
 
 
 
-func GetCatAPIRequest (endpoint string) []byte {
+func GetCatAPIRequest (endpoint string) string {
 
 	req, err := http.Get(endpoint)
 
 	if err != nil {
-		log.Fatalf("An Error Occurred %v", err)
+		log.Fatalf("An error occurred during the GET request %v", err)
 	}
 
 	defer req.Body.Close()
@@ -25,7 +25,6 @@ func GetCatAPIRequest (endpoint string) []byte {
 		log.Fatalf("An Error Occurred %v", err)
 	}
 
-
-	return response
+	return string(response)
 	
 }
